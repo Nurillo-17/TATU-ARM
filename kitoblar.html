@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Axborot Resurs Markazi</title>
+    <link rel="stylesheet" href="axborot.css">
+    <style>
+        /* Bosh sahifaning umumiy uslubi */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f9;
+            background-image: url('img/fon.PNG'); /* Orqa fon rasmi */
+            background-size: cover; /* Rasmni butun ekran bo'ylab cho'zish */
+            background-position: center center; /* Rasmni markazda joylashtirish */
+            color: #ffffff;
+        }
+
+        /* Header bo'limining uslubi */
+        header {
+            text-align: center;
+            background: rgba(130, 57, 233, 0.8); /* Rasmning ustida rang qo'shish */
+            color: white;
+            padding: 20px 0;
+        }
+
+        header h1 {
+            margin: 30px 0 0 ;
+            font-size: 2.5rem;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            margin: 20px 0 0; /* margin-top ni oshirdim */
+        }
+                /* Asosiy bo'limning uslubi */
+        main {
+            padding: 20px;
+        }
+
+        /* Kitob qidiruv bo'limining uslubi */
+        .search-section {
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .search-section input {
+            padding: 10px;
+            width: 300px;
+            font-size: 1rem;
+            margin-right: 10px;
+        }
+
+        .search-section button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            background: #6200ea;
+            color: rgb(247, 244, 244);
+            border: none;
+            cursor: pointer;
+        }
+
+        .search-section button:hover {
+            background: #3700b3;
+        }
+
+        #search-results {
+            margin-top: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            justify-content: center;
+            max-height: 500px;
+            overflow-y: auto; /* Natijalar pastga tushganida skrol qilish */
+        }
+        footer {
+            background-color: #6d87f7; /* Footer fon rangi */
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed; /* Footerni doimiy qilib joylashtiramiz */
+            bottom: 0; /* Ekranning pastki qismida joylashadi */
+            left: 0; /* Ekranning chap tomonidan boshlanadi */
+            width: 100%; /* Ekranning to'liq kengligini egallaydi */
+        }
+        .book-card {
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            overflow: hidden;
+            width: 200px;
+            text-align: center;
+            background: white;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .book-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0px 8px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .book-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .book-card h3 {
+            font-size: 1rem;
+            margin: 10px 0;
+            color: #333;
+        }
+
+        .book-card a {
+            display: inline-block;
+            padding: 10px;
+            background: #6200ea;
+            color: white;
+            text-decoration: none;
+            border-radius: 3px;
+            margin: 10px 0;
+            font-size: 0.9rem;
+        }
+
+        .book-card a:hover {
+            background: #3700b3;
+        }
+
+        /* Chat widgetning uslubi */
+        #chat-widget {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+
+        #chat-btn {
+            padding: 10px 15px;
+            background: #03dac6;
+            color: #333;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #chat-box {
+            margin-top: 10px;
+            background: white;
+            padding: 10px;
+            border: 1px solid #ccc;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+
+        #chat-box.hidden {
+            display: none;
+        }
+
+        #chat-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        #chat-send {
+            background: #6200ea;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+        }
+
+        #chat-response {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: green;
+        }
+
+        /* Kitobdan parcha suzuvchi oynaning uslubi */
+        #chat-box p {
+            font-size: 14px;
+            color: #333;
+        }
+        nav {
+            position: fixed; /* Doimiy yuqori qismda turadi */
+            top: 0;
+            left: 0;
+            width: 100%; /* Butun kenglikni egallaydi */
+            background-color: #333; /* Navigatsiya fon rangi */
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Quyoshdan tushayotgan soyani o'xshatadi */
+            z-index: 1000; /* Ustunlik darajasini belgilaydi */
+        }
+
+        nav ul {
+            margin: 0;
+            padding: 0;
+            display: flex; /* Gorizontal joylashuv */
+            justify-content: space-around; /* Elementlar orasidagi bo'sh joyni tenglashtirish */
+            list-style: none; /* Nuqtalarni olib tashlash */
+        }
+
+        nav ul li {
+            margin: 0;
+        }
+
+        nav ul li a {
+            display: block; /* Yaxshi bosish maydoni uchun */
+            padding: 15px 20px; /* Ichki oraliqlar */
+            text-decoration: none; /* Tag chiziqni olib tashlash */
+            color: white; /* Matn rangi */
+            font-size: 16px; /* Matn hajmi */
+            font-family: Arial, sans-serif; /* Matn shrift turi */
+            transition: background-color 0.3s ease; /* Tugmalarga chiroyli animatsiya */
+        }
+
+        nav ul li a:hover {
+            background-color: #555; /* Hover holati */
+            color: #f0f0f0; /* Matn rangi hoverda */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Axborot Resurs Markazi</h1>
+        <p>Kitob va ma'lumotlarni osongina qidiring!</p>
+    </header>
+    <main>
+        <section class="search-section">
+            <h2>Kitob Qidiruv</h2>
+            <input type="text" id="search-input" placeholder="Kitob nomini kiriting...">
+            <button id="search-btn">Qidirish</button>
+            <div id="search-results"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>Axborot Resurs Markazi 2024</p>
+    </footer>
+
+    <!-- ChatGPT tugmasi -->
+    <div id="chat-widget">
+        <button id="chat-btn">ChatGPT</button>
+        <div id="chat-box" class="hidden">
+            <p id="chat-response"></p>
+            <input type="text" id="chat-input" placeholder="Savolingizni yozing...">
+            <button id="chat-send">Javobni olish</button>
+        </div>
+    </div>
+
+    <script>
+        const books = [
+        { name: "Shum Bola", url: "kitob/Shum bola.pdf", image: "img/shum bola.PNG" },
+        { name: "O'tkan Kunlar", url: "kitob/utgan_kunlar_ziyouz_com_68ccf.pdf", image: "img/otkan kunlar.PNG" },
+        { name: "Kecha va Kunduz", url: "kitob/Kecha va Kunduz.pdf", image: "img/Kecha va Kunduz.PNG" },
+        { name: "Ikki Eshik Orasi", url: "kitob/Ikki_eshik_orasi_Otkir_Hoshimov.pdf", image: "img/ikki eshik orasi.PNG" },
+        { name: "Yulduzli Tunlar", url: "kitob/Pirimqul Qodirov. Yulduzli tunlar (roman).pdf", image: "img/yulduz.PNG" },
+        { name: "O'zbekiston Tarixi", url: "kitob/O_zbekiston tarixi. 7-sinf (2017, A.Muhammadjonov).pdf", image: "img/tarix.PNG" },
+        { name: "Inson va Jamiyat", url: "kitob/NamDU-ARM-4835-Инсон_ва_жамият_курси_бўйича_қўшимча.pdf", image: "img/inson.PNG" },
+        { name: "Falsafa", url: "kitob/pJHRWFNl7UjYXJd2S.pdf", image: "img/falsafa.PNG" }
+    ];
+
+        const searchBtn = document.getElementById('search-btn');
+        const searchInput = document.getElementById('search-input');
+        const searchResults = document.getElementById('search-results');
+
+        searchBtn.addEventListener('click', function() {
+            const query = searchInput.value.toLowerCase();
+            searchResults.innerHTML = '';
+
+            const filteredBooks = books.filter(book => book.name.toLowerCase().includes(query));
+
+            if (filteredBooks.length > 0) {
+                filteredBooks.forEach(book => {
+                    const bookCard = document.createElement('div');
+                    bookCard.classList.add('book-card');
+
+                    bookCard.innerHTML = `
+                        <img src="${book.image}" alt="${book.name}">
+                        <h3>${book.name}</h3>
+                        <a href="${book.url}" target="_blank">O'qish</a>
+                    `;
+
+                    searchResults.appendChild(bookCard);
+                });
+            } else {
+                searchResults.innerHTML = '<p>Hech narsa topilmadi.</p>';
+            }
+        });
+
+        // ChatGPT tugmasi
+        const chatBtn = document.getElementById('chat-btn');
+        const chatBox = document.getElementById('chat-box');
+        const chatResponse = document.getElementById('chat-response');
+        const chatInput = document.getElementById('chat-input');
+        const chatSend = document.getElementById('chat-send');
+
+        chatBtn.addEventListener('click', function() {
+            chatBox.classList.toggle('hidden');
+        });
+
+        chatSend.addEventListener('click', function() {
+            const userInput = chatInput.value.toLowerCase();
+            const book = books.find(b => userInput.includes(b.name.toLowerCase()));
+
+            if (book) {
+                chatResponse.textContent = `"${book.excerpt}" - Bu "${book.name}" kitobidan bir parcha.`;
+            } else {
+                chatResponse.textContent = "Iltimos, kitob nomini to'g'ri kiriting.";
+            }
+        });
+    </script>
+    <nav>
+        <ul>
+            <li><a href="index.html">Bosh sahifa</a></li>
+            <li><a href="Ilmiy.html">Ilmiy yangiliklar</a></li>
+            <li><a href="kitoblar.html">Kitoblar</a></li>
+                    </ul>
+    </nav>
+</body>
+</html>

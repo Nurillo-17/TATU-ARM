@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ilmiy Yangiliklar Qidiruvi</title>
+    <script async src="https://cse.google.com/cse.js?cx=9508e714cf08347d6"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            min-height: 100vh;
+        }
+/* Navigatsiya bo'limining umumiy uslubi */
+nav {
+    position: fixed; /* Doimiy yuqori qismda turadi */
+    top: 0;
+    left: 0;
+    width: 100%; /* Butun kenglikni egallaydi */
+    background-color: #333; /* Navigatsiya fon rangi */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Quyoshdan tushayotgan soyani o'xshatadi */
+    z-index: 1000; /* Ustunlik darajasini belgilaydi */
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex; /* Gorizontal joylashuv */
+    justify-content: space-around; /* Elementlar orasidagi bo'sh joyni tenglashtirish */
+    list-style: none; /* Nuqtalarni olib tashlash */
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block; /* Yaxshi bosish maydoni uchun */
+    padding: 15px 20px; /* Ichki oraliqlar */
+    text-decoration: none; /* Tag chiziqni olib tashlash */
+    color: white; /* Matn rangi */
+    font-size: 16px; /* Matn hajmi */
+    font-family: Arial, sans-serif; /* Matn shrift turi */
+    transition: background-color 0.3s ease; /* Tugmalarga chiroyli animatsiya */
+}
+
+nav ul li a:hover {
+    background-color: #555; /* Hover holati */
+    color: #f0f0f0; /* Matn rangi hoverda */
+}
+
+        h1 {
+            font-size: 2rem;
+            color: #333;
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .search-container {
+            text-align: center;
+            margin-top: 30px;
+            width: 80%;
+            max-width: 500px;
+        }
+
+        .gcse-searchbox, .gcse-searchresults {
+            display: block;
+            margin-top: 20px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            width: 80%;
+            max-width: 400px;
+            margin-right: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 1rem;
+            border: none;
+            border-radius: 5px;
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        #content {
+            margin-top: 20px;
+            padding: 10px;
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .search-results {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card {
+            padding: 15px;
+            margin-bottom: 15px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card h3 a {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .card h3 a:hover {
+            text-decoration: underline;
+        }
+
+        .card p {
+            color: #555;
+            font-size: 1rem;
+        }
+
+        .card img {
+            width: 100%;
+            max-width: 150px;
+            margin-top: 10px;
+            border-radius: 4px;
+        }
+
+        .constant-info {
+            margin-top: 40px;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            max-width: 900px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .constant-info h3 {
+            margin-top: 0;
+            font-size: 1.5rem;
+            color: #007bff;
+        }
+
+        .constant-info p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+        /* Navigatsiya bo'limining umumiy uslubi */
+nav {
+    position: fixed; /* Doimiy yuqori qismda turadi */
+    top: 0;
+    left: 0;
+    width: 100%; /* Butun kenglikni egallaydi */
+    background-color: #333; /* Navigatsiya fon rangi */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Quyoshdan tushayotgan soyani o'xshatadi */
+    z-index: 1000; /* Ustunlik darajasini belgilaydi */
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    display: flex; /* Gorizontal joylashuv */
+    justify-content: space-around; /* Elementlar orasidagi bo'sh joyni tenglashtirish */
+    list-style: none; /* Nuqtalarni olib tashlash */
+}
+
+nav ul li {
+    margin: 0;
+}
+
+nav ul li a {
+    display: block; /* Yaxshi bosish maydoni uchun */
+    padding: 15px 20px; /* Ichki oraliqlar */
+    text-decoration: none; /* Tag chiziqni olib tashlash */
+    color: white; /* Matn rangi */
+    font-size: 16px; /* Matn hajmi */
+    font-family: Arial, sans-serif; /* Matn shrift turi */
+    transition: background-color 0.3s ease; /* Tugmalarga chiroyli animatsiya */
+}
+
+nav ul li a:hover {
+    background-color: #555; /* Hover holati */
+    color: #f0f0f0; /* Matn rangi hoverda */
+}
+
+    </style>
+</head>
+<body>
+    <h1>Ilmiy Yangiliklar Qidiruvi</h1>
+
+    <div class="search-container">
+        <!-- Google Custom Search Box -->
+        <div class="gcse-search"></div>
+    </div>
+
+    <div id="content">
+        <!-- Qidiruv natijalari shu yerda ko'rsatiladi -->
+        <div class="search-results" id="search-results"></div>
+    </div>
+
+    <div class="constant-info" id="constant-info">
+        <h3>Ilmiy Ma'lumotlar</h3>
+        <p>Ilmiy yangiliklar va ma'lumotlar har doim yangilanib turadi.</p>
+        <!-- Qo'lda kiritilgan ilmiy ma'lumotlar -->
+        <div class="card">
+            <h3><a href="https://www.ubtuit.uz/news?page=4" target="_blank">Ilmiy yangilik </a></h3>
+            <p>Bu ilmiy yangilikning qisqacha tavsifi. Unda yangi ilmiy tadqiqotlar haqida ma'lumot beriladi.</p>
+            <img src="img/2.PNG" alt="Image for article 1">
+        </div>
+
+        <div class="card">
+            <h3><a href="https://tatuff.uz/ru/2023/02/04/" target="_blank">Ilmiy yangilik</a></h3>
+            <p>Ikkinchi ilmiy yangilik haqida qisqacha tavsif. Tadqiqotlar va yangi kashfiyotlar haqida ma'lumotlar.</p>
+            <img src="img/1.PNG" alt="Image for article 2">
+        </div>
+
+        <div class="card">
+            <h3><a href="https://cisc.uz/habar-Targ-ibot-tadbirlari-Toshkent-viloyatida-ham-boshlandi-565" target="_blank">Ilmiy yangilik </a></h3>
+            <p>Uchinchi ilmiy yangilik haqida qisqacha ma'lumot. Yangi ilmiy tadqiqotlar va yangiliklar.</p>
+            <img src="img/3.PNG" alt="Image for article 3">
+        </div>
+
+    </div>
+    <nav>
+        <ul>
+            <li><a href="index.html">Bosh sahifa</a></li>
+            <li><a href="Ilmiy.html">Ilmiy yangiliklar</a></li>
+            <li><a href="kitoblar.html">Kitoblar</a></li>
+        </ul>
+    </nav>
+</body>
+</html>

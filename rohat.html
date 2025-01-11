@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ro'yxatdan o'tish Formasi</title>
+    <!-- Font Awesome uchun link (ikonalar uchun) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Umumiy stil */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-image: url('img/lo.PNG'); /* Orqa fon rasmi */
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.9); /* Oq rangda yarim shaffof fon */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            text-align: center;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: #333;
+        }
+
+        .input-container {
+            position: relative;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            border: 2px solid #ccc;
+            border-radius: 5px;
+            padding: 10px;
+            transition: all 0.3s ease;
+        }
+
+        .input-container i {
+            position: absolute;
+            left: 10px;
+            color: #aaa;
+            transition: all 0.3s ease;
+        }
+
+        .input-container input {
+            width: 100%;
+            padding: 10px 10px 10px 30px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .input-container input:focus {
+            border-color: #6200ea;
+        }
+
+        .input-container input:focus + i {
+            color: #6200ea;
+        }
+
+        .input-container input:valid {
+            border-color: #4caf50;
+        }
+
+        .submit-btn {
+            width: 100%;
+            padding: 10px;
+            background-color: #6200ea;
+            color: white;
+            font-size: 1.1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #3700b3;
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.9rem;
+            color: #333;
+        }
+
+        .footer a {
+            text-decoration: none;
+            color: #6200ea;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Ro'yxatdan o'tish</h2>
+        <form id="register-form">
+            <div class="input-container">
+                <i class="fas fa-user"></i>
+                <input type="text" id="username" placeholder="Foydalanuvchi nomi" required>
+            </div>
+            <div class="input-container">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="email" placeholder="Elektron pochta" required>
+            </div>
+            <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="password" placeholder="Parol" required>
+            </div>
+            <div class="input-container">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="confirm-password" placeholder="Parolni tasdiqlash" required>
+            </div>
+            <button type="submit" class="submit-btn">Ro'yxatdan o'tish</button>
+        </form>
+
+        <div class="footer">
+            <p>Allaqachon hisobingiz bormi? <a href="login.html">Kirish</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Ro'yxatdan o'tish formasi
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();  // Formani yuborishni to'xtatish
+
+            // Foydalanuvchi kiritgan ma'lumotlarni olish
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Parollarni tekshirish
+            if (password !== confirmPassword) {
+                alert('Parollar bir xil emas!');
+                return;
+            }
+
+            // Ma'lumotlarni konsolga chiqarish (bu yerda haqiqiy serverga yuborishingiz mumkin)
+            console.log('Foydalanuvchi nomi:', username);
+            console.log('Elektron pochta:', email);
+            console.log('Parol:', password);
+
+            // Ro'yxatdan o'tish muvaffaqiyatli bo'lsa, foydalanuvchini bosh sahifaga yuborish
+            alert('Ro\'yxatdan o\'tish muvaffaqiyatli!');
+            window.location.href = 'login.html'; // Login sahifasiga yo'naltirish
+        });
+    </script>
+</body>
+</html>
+
